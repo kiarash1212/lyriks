@@ -10,14 +10,14 @@ const SongDetails = () => {
     
 
     if (isFetching) return <Loader />
-    if (error || !data) return console.log(error)
+    if (error) return console.log(error)
 
     return (
     <div className="flex flex-col">
         <h2 className="text-gray-300 text-2xl">Lyrics :</h2>
 
         <div className="pl-2 flex flex-col gap-2">
-            {data?.resources.lyrics ? 
+            {data?.resources?.lyrics ? 
                 data?.
                 resources?.
                 lyrics[Object.keys(data?.resources.lyrics)[0]]?.

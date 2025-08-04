@@ -22,7 +22,7 @@ const TopPlay = () => {
 
   useEffect(() => {
     divRef.current.scrollIntoView({behavior:'smooth'})
-  })
+  }, [])
   const handlePauseClick = () => {
     dispatch(playPause(false))
   }
@@ -37,9 +37,7 @@ const TopPlay = () => {
 
       <div className="flex flex-row w-full items-center justify-between">
         <h2 className="text-white font-bold text-2xl">Top Charts</h2>
-        <Link to='/top-charts' className="text-base cursor-pointer text-gray-300">
-        See more
-        </Link>
+        
       </div>
 
       <div className="flex flex-col mt-4 gap-3">

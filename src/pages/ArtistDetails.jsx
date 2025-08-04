@@ -26,7 +26,7 @@ const ArtistDetails = () => {
   <div className="flex flex-row gap-1 items-center w-full">
     
     <img src={data?.data[0].attributes.artwork.url.replace('{w}', '250').replace('{h}', '250')} 
-    className="rounded-full object-cover w-1/5 shadow-md"/>
+    className="rounded-full object-cover w-1/5 border-white border-2"/>
 
     <h2 className="text-gray-200 text-2xl p-4 font-bold">{data?.data[0].attributes.artistName}</h2>
     

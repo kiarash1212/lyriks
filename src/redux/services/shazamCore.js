@@ -13,7 +13,18 @@ export const shazamCoreApi = createApi({
     endpoints: (builder) => ({
         getTopChart : builder.query({
             query:(genre='POP') => 
-                `/charts/get-top-songs-in_country_by_genre?country_code=US&genre=${genre}&limit=20`,
+                `/charts/get-top-songs-in_world_by_genre?genre=${genre}&limit=20`,
+            transformResponse:(rawResult, meta, args) => {
+                const finalResult = rawResult.data.map(song => ({
+                    ...song,
+                    title: song.attributes?.name
+                })
+            )
+            return finalResult
+            }}),
+        getTopInTheCountry : builder.query({
+            query:(genre='POP', country='US') => 
+                `/charts/get-top-songs-in_country_by_genre?country_code=${country}&genre=${genre}&limit=20`,
             transformResponse:(rawResult, meta, args) => {
                 const finalResult = rawResult.data.map(song => ({
                     ...song,
@@ -64,6 +75,6 @@ export const shazamCoreApi = createApi({
 
 export const {
     useGetTopChartQuery, useGetSongDetails1Query, useGetSongDetails2Query, 
-    useGetArtistDetailsQuery, useSearchQuery, useGetArtistTopSongsQuery
+    useGetArtistDetailsQuery, useSearchQuery, useGetArtistTopSongsQuery, useGetTopInTheCountryQuery
 
 } = shazamCoreApi;
